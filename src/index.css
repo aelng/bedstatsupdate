@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{margin:0; padding:0;}
+
+:root {
+  background-color: #892c2c;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navi {
+  display: flex;
+  font-family: Belanosima;
+  justify-content: flex-end;
+  gap: 2em;
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 1%;
+  margin-right: 3%; 
+}
+
+.option {
+  position: relative;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.option::after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  background: rgb(236, 18, 18);
+  transition: width .2s;
+}
+
+.option:hover:after {
+  width: 100%;
+}
+
+.option-icon {
+  margin-top: 8%;
+  margin-right: 3%;
+}
+
+.sidebar {
+  display: none
+}
+
+.ic {
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ic {
+    display: block;
+  }
+
+  .sidebar{
+    position: fixed;
+    margin-top: 7%;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    background-color: rgba(186, 47, 47, 0.539);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+  }
+  
+  .sidebar ul{
+    margin-left: 5%;
+    height: 100%;
+    font-size: 2rem;
+    list-style-type: none;
+  }
+  
+  .sidebar li{
+    margin-top: 30%;
+  }
+
+  .sidebar.active{
+    transition: all 0.7s ease-in;
+    display: flex;
+  }
+
+  .option{
+    display: none
+  }
+}
+
+@font-face{
+  font-family: Belanosima;
+  src: url('./assets/belan.ttf');
+}
+
+
+
+.blinker { 
+  animation-name: blinker;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1,0,0,1);
+  animation-duration: 1s;
+  
+  display: inline-block;
+  width: 7px;
+  height: 70px;
+  margin-left: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(white,.3);
+  background-color: rgb(255, 0, 0);
+}
+
+@keyframes blinker { 
+  from { opacity: 1.0; } to { opacity: 0.0; }
+}
+
+.heading {
+  margin: 2rem 0 0;
+  font-family: Belanosima;
+  font-size: 80px;
+  font-weight: 100;
+  line-height: 1.1;
+  color: white;
+  text-align: center;
+  margin-bottom: 1.55%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.descr {
+  font-family: Belanosima;
+  text-align: center;
+  color: white;
+}
+
+.contain {
+  display: flex;
+  flex-direction: column;
+}
+
+.person {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-radius 0.2s ease, filter 0.3s !important;
+
+}
+
+.person:hover {
+  transform: scale(1.1);
+  border-radius: 3rem;
+}
