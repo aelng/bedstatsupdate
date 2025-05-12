@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://75.101.138.211:8080/servers');
+        const response = await axios.get('https://gianpena.xyz/servers');
         setData(response.data);
       } catch (err) {
         setError(err.message);
@@ -34,7 +34,7 @@ function Home() {
     }}
     title="Online"
   />
-  <p className="descr">Active on 4885 servers</p>
+  <p className="descr">Active on {JSON.stringify(data, 2, null)} servers</p>
 </div>
             <div>
                 <h1 className="heading">
