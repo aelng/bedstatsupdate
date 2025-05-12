@@ -1,8 +1,41 @@
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 
 function Home() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://75.101.138.211:8080/servers');
+        setData(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
     return(
         <>
         <div className="contain">
+            <div className="flex items-center justify-center gap-2">
+  <div
+    className="w-4 h-4 rounded-full border-2 border-black"
+    style={{
+      animation: "fadeStatus 3s ease-in-out infinite",
+    }}
+    title="Online"
+  />
+  <pre>{JSON.stringify(data, null, 2)}</pre>
+</div>
             <div>
                 <h1 className="heading">
                     BedStats<span className="blinker"></span>

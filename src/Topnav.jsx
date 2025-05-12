@@ -17,6 +17,7 @@ function Topnav () {
     return(
         <>
             <nav>
+                
                 <div className="navi">
                     <img src={bedd}alt="bedimg"style={{width: "50px", height: "auto", position: "fixed", left: "1%", top: "1.4%"}}/>
                     <a className="option" href="https://top.gg/bot/601205271578017813" target="_blank">

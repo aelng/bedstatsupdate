@@ -1,0 +1,5 @@
+@keyframes statusPulse {
+  0% { --status-color: #ccc; }   // gray
+  50% { --status-color: #4ade80; } // green-400
+  100% { --status-color: #ccc; } // gray
+}
