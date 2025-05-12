@@ -23,10 +23,17 @@ function Home() {
     fetchData();
   }, []);
 
+  let value = 4885;
+
+  if (data != null) {
+    value = data;
+  }
+
     return(
         <>
         <div className="contain">
             <div className="flex items-center justify-center gap-2">
+      
   <div
     className="w-4 h-4 rounded-full border-2 border-black"
     style={{
@@ -34,7 +41,7 @@ function Home() {
     }}
     title="Online"
   />
-  <p className="descr">Active on {JSON.stringify(data, 2, null)} servers</p>
+  <p className="descr">Active on {JSON.stringify(value, 2, null)} servers</p>
 </div>
             <div>
                 <h1 className="heading">
