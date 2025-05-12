@@ -34,7 +34,7 @@ function Home() {
     }}
     title="Online"
   />
-  <p className="descr">Active on {JSON.stringify(data, null, 2)} servers</p>
+  <p className="descr">Active on 4885 servers</p>
 </div>
             <div>
                 <h1 className="heading">
