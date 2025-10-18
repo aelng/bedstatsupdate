@@ -7,11 +7,16 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
+  //601205271578017813
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://gianpena.xyz/servers');
+        // Call API route - works both locally and on Vercel
+        const apiUrl = import.meta.env.DEV 
+          ? 'http://localhost:3001/api/bot-stats/601205271578017813'
+          : '/api/bot-stats?botId=601205271578017813';
+        
+        const response = await axios.get(apiUrl);
         setData(response.data);
       } catch (err) {
         setError(err.message);
