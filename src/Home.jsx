@@ -31,7 +31,7 @@ function Home() {
   let value = 4885;
 
   if (data != null) {
-    value = data;
+    value = data.server_count;
   }
 
     return(
