@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Call API route - works both locally and on Vercel
+        // api call
         const apiUrl = import.meta.env.DEV 
           ? 'http://localhost:3001/api/bot-stats/601205271578017813'
           : '/api/bot-stats?botId=601205271578017813';
