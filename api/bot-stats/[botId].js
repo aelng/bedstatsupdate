@@ -25,7 +25,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await axios.get(`https://top.gg/api/bots/${botId}`, {
+    // Check if AUTH_TOKEN exists
+    if (!process.env.AUTH_TOKEN) {
+      console.error('AUTH_TOKEN is not set in environment variables');
+      return res.status(500).json({ 
+        error: 'Server configuration error',
+        message: 'AUTH_TOKEN is not configured' 
+      });
+    }
+
+    // Use the /stats endpoint to get server_count
+    const response = await axios.get(`https://top.gg/api/bots/${botId}/stats`, {
       headers: {
         'Authorization': process.env.AUTH_TOKEN
       }

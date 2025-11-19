@@ -14,7 +14,7 @@ function Home() {
         // api call
         const apiUrl = import.meta.env.DEV 
           ? 'http://localhost:3001/api/bot-stats/601205271578017813'
-          : '/api/bot-stats?botId=601205271578017813';
+          : '/api/bot-stats/601205271578017813';
         
         const response = await axios.get(apiUrl);
         setData(response.data);
@@ -28,9 +28,10 @@ function Home() {
     fetchData();
   }, []);
 
-  let value = "Fetching";
+  // Default to 4885, use API data if available
+  let value = 4885;
 
-  if (data != null) {
+  if (data != null && data.server_count) {
     value = data.server_count;
   }
 
@@ -63,7 +64,7 @@ function Home() {
   />
   <p className="descr">
     {loading ? (
-      <span className="loading-dots">{value}</span>
+      <span className="loading-dots">Fetching</span>
     ) : (
       `Active on ${JSON.stringify(value, 2, null)} servers`
     )}
