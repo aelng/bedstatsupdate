@@ -28,7 +28,7 @@ function Home() {
     fetchData();
   }, []);
 
-  let value = 4885;
+  let value = "Fetching";
 
   if (data != null) {
     value = data.server_count;
@@ -36,6 +36,21 @@ function Home() {
 
     return(
         <>
+        <style>{`
+          @keyframes dotPulse {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+          }
+          
+          .loading-dots::after {
+            content: '...';
+            animation: dotPulse 1.5s infinite;
+            display: inline-block;
+            width: 20px;
+            text-align: left;
+          }
+        `}</style>
         <div className="contain">
             <div className="flex items-center justify-center gap-2">
       
@@ -46,7 +61,13 @@ function Home() {
     }}
     title="Online"
   />
-  <p className="descr">Active on {JSON.stringify(value, 2, null)} servers</p>
+  <p className="descr">
+    {loading ? (
+      <span className="loading-dots">{value}</span>
+    ) : (
+      `Active on ${JSON.stringify(value, 2, null)} servers`
+    )}
+  </p>
 </div>
             <div>
                 <h1 className="heading">

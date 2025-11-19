@@ -19,7 +19,7 @@ app.get('/api/bot-stats/:botId', async (req, res) => {
   const { botId } = req.params;
   
   try {
-    const response = await axios.get(`https://top.gg/api/bots/${botId}`, {
+    const response = await axios.get(`https://top.gg/api/bots/${botId}/stats`, {
       headers: {
         'Authorization': process.env.AUTH_TOKEN
       }
@@ -41,6 +41,5 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
-  console.log(`Frontend should connect to: http://localhost:${PORT}/api/bot-stats/:botId`);
 });
 
